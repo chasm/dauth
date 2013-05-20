@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   validates :name, presence: true, uniqueness: true
-  validates :email, uniqueness: true, case_sensitive: false
+  validates :email, uniqueness: { case_sensitive: false }
 end
