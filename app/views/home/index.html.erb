@@ -1,5 +1,29 @@
 <h1>Home</h1>
 
-<% @users.each do |user| %>
-  <p>User: <%= link_to user.name, user %></p>
+<% @articles.each do |article| %>
+  <article>
+    <h3><%= article.name %></h3>
+    <p class="muted">by <%= article.author_name %></p>
+    
+    <p>
+      <%= article.content %>
+    </p>
+    
+    <section class="comments">
+      <h3><%= pluralize(article.comments.size, 'comment') %></h3>
+
+      <% unless article.comments.empty? %>
+        <% for comment in article.comments %>
+          <div class="comment">
+            <p>
+              On <strong class="text-success"><%= comment.created_at.strftime('%A, %d %b %Y at %H:%M %P') %></strong>
+              <%= link_to_unless comment.site_url.blank?, comment.author_name, comment.site_url %> said:
+            </p>
+    
+            <p class="content"><%= comment.content %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+  </article>
 <% end %>

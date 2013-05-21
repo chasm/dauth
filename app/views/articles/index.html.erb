@@ -1,0 +1,25 @@
+<table class="table table-bordered table-striped">
+  <caption>
+    <span class="pull-right"><%= link_to 'New Article', new_article_path, :class => 'btn btn-warning' %></span>
+    Articles
+  </caption>
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+    <th>Author name</th>
+    <th></th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= link_to article.name, article %></td>
+    <td><%= truncate(article.content, length: 60) %></td>
+    <td><%= article.author_name %></td>
+    <td>
+      <%= link_to 'Edit', edit_article_path(article), :class => 'btn btn-warning' %>
+      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

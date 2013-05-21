@@ -1,0 +1,14 @@
+<%= form_tag new_user_session_path %>
+  <fieldset>
+    <legend>Sign in</legend>
+    <p>
+      <input type="email" id="user_email" name="user[email]" placeholder="Enter your email address">
+    </p>
+    <p>
+      <input type="password" id="user_password" name="user[password]" placeholder="Enter your password">
+    </p>
+    <p>
+      <input type="submit" value="Sign in" class="btn btn-warning">
+    </p>
+  </fieldset>
+</form>

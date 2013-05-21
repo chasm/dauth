@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @articles = Article.order("created_at DESC")
   end
 end

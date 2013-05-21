@@ -1,6 +1,24 @@
-puts 'DEFAULT USERS'
-user = User.find_or_create_by_email name: ENV['ADMIN_NAME'].dup,
-  email: ENV['ADMIN_EMAIL'].dup,
-  password: ENV['ADMIN_PASSWORD'].dup,
-  password_confirmation: ENV['ADMIN_PASSWORD'].dup
-puts 'user: ' << user.name
+User.destroy_all
+
+puts "Running db:seed!"
+
+user1 = User.create(
+  name: "Chas.",
+  email: "chas@munat.com",
+  password: "!QAZxsw2",
+  password_confirmation: "!QAZxsw2"
+)
+
+user2 = User.create(
+  name: "Wm.",
+  email: "wm@munat.com",
+  password: "!QAZxsw2",
+  password_confirmation: "!QAZxsw2"
+)
+
+user3 = User.create(
+  name: "Ed.",
+  email: "ed@munat.com",
+  password: "!QAZxsw2",
+  password_confirmation: "!QAZxsw2"
+)

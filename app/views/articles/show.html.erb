@@ -1,0 +1,40 @@
+<p class=pull-right>
+  <%= link_to 'Edit', edit_article_path(@article), :class => 'btn btn-warning' %>
+  <%= link_to 'Back', articles_path, :class => 'btn btn-info' %>
+</p>
+
+<h2><%= @article.name %></h2>
+
+<p class="muted">
+  by <%= @article.author_name %>
+</p>
+
+<p>
+  <%= @article.content %>
+</p>
+
+
+<h3><%= pluralize(@article.comments.size, 'comment') %></h3>
+
+<% unless @article.comments.empty? %>
+  <% for comment in @article.comments %>
+    <div class="comment">
+      <p class="pull-right">
+        <%= link_to "Edit", edit_article_comment_path( @article, comment ), :class => 'btn-small btn-warning' %>
+        <%= link_to "Destroy", [ @article, comment ], :method => :delete, :confirm => "Are you sure?", :class => 'btn-small btn-danger' %>
+      </p>
+    
+      <p>
+        On <strong class="text-success"><%= comment.created_at.strftime('%A, %d %b %Y at %H:%M %P') %></strong>
+        <%= link_to_unless comment.site_url.blank?, comment.author_name, comment.site_url %> said:
+      </p>
+    
+      <p class="content"><%= comment.content %></p>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+<h3>Add your comment:</h3>
+<%= render :partial => 'comments/form' %>
+
