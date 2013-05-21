@@ -12,6 +12,7 @@ end
 gem 'jquery-rails'
 gem 'devise', '>= 2.2.3'
 gem 'figaro', '>= 0.6.3'
+gem 'declarative_authorization'
 
 group :development, :test do
   gem 'rspec-rails', '>= 2.12.2'

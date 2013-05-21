@@ -1,6 +1,8 @@
 <table class="table table-bordered table-striped">
   <caption>
-    <span class="pull-right"><%= link_to 'New Article', new_article_path, :class => 'btn btn-warning' %></span>
+    <% if permitted_to? :new, Article.new %>
+      <span class="pull-right"><%= link_to 'New Article', new_article_path, :class => 'btn btn-warning' %></span>
+    <% end %>
     Articles
   </caption>
   <tr>
@@ -16,8 +18,12 @@
     <td><%= truncate(article.content, length: 60) %></td>
     <td><%= article.author_name %></td>
     <td>
-      <%= link_to 'Edit', edit_article_path(article), :class => 'btn btn-warning' %>
-      <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+      <% if permitted_to? :edit, article %>
+        <%= link_to 'Edit', edit_article_path(article), :class => 'btn btn-warning' %>
+      <% end %>
+      <% if permitted_to? :destroy, article %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+      <% end %>
     </td>
   </tr>
 <% end %>

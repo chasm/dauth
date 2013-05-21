@@ -20,8 +20,12 @@
   <% for comment in @article.comments %>
     <div class="comment">
       <p class="pull-right">
-        <%= link_to "Edit", edit_article_comment_path( @article, comment ), :class => 'btn-small btn-warning' %>
-        <%= link_to "Destroy", [ @article, comment ], :method => :delete, :confirm => "Are you sure?", :class => 'btn-small btn-danger' %>
+        <% if permitted_to? :edit, comment %>
+          <%= link_to "Edit", edit_article_comment_path( @article, comment ), :class => 'btn-small btn-warning' %>
+        <% end %>
+        <% if permitted_to? :destroy, comment %>
+          <%= link_to "Destroy", [ @article, comment ], :method => :delete, :confirm => "Are you sure?", :class => 'btn-small btn-danger' %>
+        <% end %>
       </p>
     
       <p>

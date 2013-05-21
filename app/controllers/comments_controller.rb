@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  filter_resource_access
   
   def edit
     @article = Article.find(params[:article_id])

@@ -1,4 +1,10 @@
 Dauth::Application.routes.draw do
+  resources :assignments
+
+
+  resources :roles
+
+
   authenticated :user do
     root :to => "home#index"
   end
